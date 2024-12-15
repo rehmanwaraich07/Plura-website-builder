@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -45,12 +46,7 @@ const formSchema = z.object({
   country: z.string(),
 });
 
-//CHALLENGE Give access for Subaccount Guest they should see a different view maybe a form that allows them to create tickets
-
-//CHALLENGE layout.tsx oonly runs once as a result if you remove permissions for someone and they keep navigating the layout.tsx wont fire again. solution- save the data inside metadata for current user.
-
 interface SubAccountDetailsProps {
-  //To add the sub account to the agency
   agencyDetails: Agency;
   details?: Partial<SubAccount>;
   userId: string;
@@ -130,7 +126,6 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
   }, [details]);
 
   const isLoading = form.formState.isSubmitting;
-  //CHALLENGE Create this form.
   return (
     <Card className="w-full">
       <CardHeader>
@@ -146,13 +141,26 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
               name="subAccountLogo"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Account Logo</FormLabel>
+                  <FormLabel>Subaccount Logo</FormLabel>
                   <FormControl>
-                    <FileUpload
-                      apiEndpoint="subaccountLogo"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
+                    <div className="flex justify-center items-center gap-2">
+                      <FileUpload
+                        apiEndpoint="subaccountLogo"
+                        onChange={field.onChange}
+                        value={field.value}
+                      />
+                      {field.value && (
+                        <Button
+                          type="button"
+                          variant="destructive"
+                          size="sm"
+                          onClick={() => field.onChange("")}
+                          className="mt-2"
+                        >
+                          Remove Logo
+                        </Button>
+                      )}
+                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -185,8 +193,17 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
                   <FormItem className="flex-1">
                     <FormLabel>Account Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="Email" {...field} />
+                      <Input
+                        placeholder="Email"
+                        {...field}
+                        disabled={!!details?.companyEmail}
+                      />
                     </FormControl>
+                    {details?.companyEmail && (
+                      <FormDescription>
+                        Email cannot be changed after subaccount creation
+                      </FormDescription>
+                    )}
                     <FormMessage />
                   </FormItem>
                 )}

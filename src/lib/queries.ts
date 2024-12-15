@@ -976,3 +976,12 @@ export async function deleteNotification(notificationId: string) {
     return { success: false, error: "Failed to delete notification" };
   }
 }
+
+export const data = async (subaccountId: string) => {
+  const response = await db.subAccount.findUnique({
+    where: {
+      id: subaccountId,
+    },
+  });
+  return response;
+};

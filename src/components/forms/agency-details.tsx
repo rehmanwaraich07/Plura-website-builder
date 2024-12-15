@@ -185,7 +185,6 @@ const AgencyDetails = ({ data }: Props) => {
   const handleDeleteAgency = async () => {
     if (!data?.id) return;
     setDeletingAgency(true);
-    //WIP: discontinue the subscription
     try {
       const response = await deleteAgency(data.id);
       toast({
@@ -281,13 +280,15 @@ const AgencyDetails = ({ data }: Props) => {
                           <Input
                             placeholder="Email"
                             {...field}
-                            disabled
                             className="bg-muted cursor-not-allowed"
+                            disabled={!!data?.companyEmail}
                           />
                         </FormControl>
-                        <FormDescription className="text-xs">
-                          Email cannot be changed after agency creation
-                        </FormDescription>
+                        {data?.companyEmail && (
+                          <FormDescription className="text-xs">
+                            Email cannot be changed after agency creation
+                          </FormDescription>
+                        )}
                         <FormMessage />
                       </FormItem>
                     )}

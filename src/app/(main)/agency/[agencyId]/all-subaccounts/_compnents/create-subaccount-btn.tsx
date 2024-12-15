@@ -37,7 +37,7 @@ const CreateSubaccountButton = ({ className, id, user }: Props) => {
         setOpen(
           <CustomModal
             title="Create a Subaccount"
-            subheading="You can switch bettween"
+            subheading="You can switch between Subaccounts"
           >
             <SubAccountDetails
               agencyDetails={agencyDetails}
