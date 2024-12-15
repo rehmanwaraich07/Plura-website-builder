@@ -1,29 +1,29 @@
-import { db } from '@/lib/db'
-import EditorProvider from '@/providers/editor/editor-provider'
-import { redirect } from 'next/navigation'
-import React from 'react'
-import FunnelEditorNavigation from './_components/funnel-editor-navigation'
-import FunnelEditorSidebar from './_components/funnel-editor-sidebar'
-import FunnelEditor from './_components/funnel-editor'
+import { db } from "@/lib/db";
+import EditorProvider from "@/providers/editor/editor-provider";
+import { redirect } from "next/navigation";
+import React from "react";
+import FunnelEditorNavigation from "./_components/funnel-editor-navigation";
+import FunnelEditorSidebar from "./_components/funnel-editor-sidebar";
+import FunnelEditor from "./_components/funnel-editor";
 
 type Props = {
   params: {
-    subaccountId: string
-    funnelId: string
-    funnelPageId: string
-  }
-}
+    subaccountId: string;
+    funnelId: string;
+    funnelPageId: string;
+  };
+};
 
 const Page = async ({ params }: Props) => {
   const funnelPageDetails = await db.funnelPage.findFirst({
     where: {
       id: params.funnelPageId,
     },
-  })
+  });
   if (!funnelPageDetails) {
     return redirect(
       `/subaccount/${params.subaccountId}/funnels/${params.funnelId}`
-    )
+    );
   }
 
   return (
@@ -45,7 +45,7 @@ const Page = async ({ params }: Props) => {
         <FunnelEditorSidebar subaccountId={params.subaccountId} />
       </EditorProvider>
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

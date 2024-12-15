@@ -52,6 +52,14 @@ const InfoBar = ({ notifications, subAccountId, className, role }: Props) => {
     setShowAll((prev) => !prev);
   };
 
+  const handleDelete = (id: string) => {
+    setAllNotifications((prev) =>
+      Array.isArray(prev)
+        ? prev.filter((notification) => notification.id !== id)
+        : []
+    );
+  };
+
   return (
     <>
       <div
@@ -81,7 +89,7 @@ const InfoBar = ({ notifications, subAccountId, className, role }: Props) => {
                       className="rounded-full focus:outline-none focus:ring-2 focus:ring-primary"
                       aria-label="Close notification bar"
                     >
-                      <X className="h-5 w-5" />
+                      <X className="h-5 w-5 mr-6" />
                     </Button>
                   </SheetClose>
                 </div>
@@ -99,7 +107,7 @@ const InfoBar = ({ notifications, subAccountId, className, role }: Props) => {
                   allNotifications.map((notification) => (
                     <div
                       key={notification.id}
-                      className="flex items-start gap-4 p-4 rounded-lg bg-secondary/50"
+                      className="flex items-start gap-4 p-4 rounded-lg bg-secondary/50 relative"
                     >
                       <Avatar>
                         <AvatarImage
@@ -128,6 +136,15 @@ const InfoBar = ({ notifications, subAccountId, className, role }: Props) => {
                           ).toLocaleDateString()}
                         </p>
                       </div>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="absolute top-2 right-2 rounded-full focus:outline-none focus:ring-2 focus:ring-primary"
+                        onClick={() => handleDelete(notification.id)}
+                        aria-label="Delete notification"
+                      >
+                        <X className="h-4 w-4" />
+                      </Button>
                     </div>
                   ))
                 ) : (

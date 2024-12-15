@@ -38,6 +38,7 @@ const Container = ({ element }: Props) => {
             },
           },
         });
+        break;
       case "container":
         dispatch({
           type: "ADD_ELEMENT",
@@ -53,6 +54,158 @@ const Container = ({ element }: Props) => {
           },
         });
         break;
+      case "video":
+        dispatch({
+          type: "ADD_ELEMENT",
+          payload: {
+            containerId: id,
+            elementDetails: {
+              content: {
+                src: "https://www.youtube.com/embed/wo-lAYmdM4w?si=b9E1kGx4u5q5ALop",
+              },
+              id: v4(),
+              name: "Video",
+              styles: {},
+              type: "video",
+            },
+          },
+        });
+        break;
+      case "link":
+        dispatch({
+          type: "ADD_ELEMENT",
+          payload: {
+            containerId: id,
+            elementDetails: {
+              content: {
+                innerText: "Link Element",
+                href: "#",
+              },
+              id: v4(),
+              name: "Link",
+              styles: {
+                color: "black",
+                ...defaultStyles,
+              },
+              type: "link",
+            },
+          },
+        });
+        break;
+      case "2Col":
+        dispatch({
+          type: "ADD_ELEMENT",
+          payload: {
+            containerId: id,
+            elementDetails: {
+              content: [
+                {
+                  content: [],
+                  id: v4(),
+                  name: "Container",
+                  styles: { ...defaultStyles, width: "100%" },
+                  type: "container",
+                },
+                {
+                  content: [],
+                  id: v4(),
+                  name: "Container",
+                  styles: { ...defaultStyles, width: "100%" },
+                  type: "container",
+                },
+              ],
+              id: v4(),
+              name: "Two Columns",
+              styles: { ...defaultStyles, display: "flex" },
+              type: "2Col",
+            },
+          },
+        });
+        break;
+      case "3Col":
+        dispatch({
+          type: "ADD_ELEMENT",
+          payload: {
+            containerId: element.id,
+            elementDetails: {
+              content: [
+                {
+                  content: [],
+                  id: v4(),
+                  name: "Container",
+                  styles: { ...defaultStyles, width: "100%" },
+                  type: "container",
+                },
+                {
+                  content: [],
+                  id: v4(),
+                  name: "Container",
+                  styles: { ...defaultStyles, width: "100%" },
+                  type: "container",
+                },
+                {
+                  content: [],
+                  id: v4(),
+                  name: "Container",
+                  styles: { ...defaultStyles, width: "100%" },
+                  type: "container",
+                },
+              ],
+              id: v4(),
+              name: "Two Columns",
+              styles: { ...defaultStyles, display: "flex" },
+              type: "3Col",
+            },
+          },
+        });
+        break;
+      case "contactForm":
+        dispatch({
+          type: "ADD_ELEMENT",
+          payload: {
+            containerId: id,
+            elementDetails: {
+              content: [],
+              id: v4(),
+              name: "Contact Form",
+              type: "contactForm",
+              styles: {},
+            },
+          },
+        });
+        break;
+      case "paymentForm":
+        dispatch({
+          type: "ADD_ELEMENT",
+          payload: {
+            containerId: id,
+            elementDetails: {
+              content: [],
+              id: v4(),
+              name: "Payment Form",
+              styles: {},
+              type: "paymentForm",
+            },
+          },
+        });
+        break;
+      case "image":
+        dispatch({
+          type: "ADD_ELEMENT",
+          payload: {
+            containerId: id,
+            elementDetails: {
+              content: {
+                innerText: "Image Element",
+                src: "#",
+              },
+              id: v4(),
+              name: "Image",
+              styles: {},
+              type: "image",
+            },
+          },
+        });
       default:
     }
   };
@@ -90,7 +243,7 @@ const Container = ({ element }: Props) => {
         "max-w-full w-full": type === "container" || type === "2Col",
         "h-fit": type === "container",
         "h-full": type === "__body",
-        "overflow-scroll ": type === "__body",
+        "overflow-auto ": type === "__body",
         "flex flex-col md:!flex-row": type === "2Col",
         "!border-blue-500":
           state.editor.selectedElement.id === id &&
@@ -107,6 +260,7 @@ const Container = ({ element }: Props) => {
       onDrop={(e) => handleOnDrop(e, id)}
       onDragOver={handleDragOver}
       draggable={type !== "__body"}
+      // WIP add content to send with the container
       onDragStart={(e) => handleDragStart(e, "container")}
       onClick={handleOnClick}
     >

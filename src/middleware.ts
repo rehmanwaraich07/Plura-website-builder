@@ -3,6 +3,24 @@ import { NextResponse } from "next/server";
 
 export default clerkMiddleware((auth, req) => {
   const url = req.nextUrl;
+  const searchParams = url.searchParams.toString();
+  const hostname = req.headers;
+
+  const pathWithSearchParams = `${url.pathname}${
+    searchParams.length > 0 ? `?${searchParams}` : ""
+  }`;
+
+  const customSubDomain = hostname
+    .get("host")
+    ?.split(`${process.env.NEXT_PUBLIC_DOMAIN}`)
+    .filter(Boolean)[0];
+
+  if (customSubDomain) {
+    return NextResponse.rewrite(
+      new URL(`/${customSubDomain}${pathWithSearchParams}`, req.url)
+    );
+  }
+
   if (
     url.pathname === "/" ||
     (url.pathname === "/site" && url.host === process.env.NEXT_PUBLIC_DOMAIN)

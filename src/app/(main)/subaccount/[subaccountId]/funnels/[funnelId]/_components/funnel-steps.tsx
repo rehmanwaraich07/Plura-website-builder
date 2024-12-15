@@ -95,7 +95,7 @@ const FunnelSteps = ({ funnel, subaccountId, pages, funnelId }: Props) => {
     <>
       <AlertDialog>
         <div className="flex border-[1px] lg:!flex-row flex-col">
-          <aside className="flex-[0.3] bg-background p-6 flex flex-col justify-between">
+          <aside className="flex-[0.4] bg-background p-6 flex flex-col justify-between">
             <ScrollArea className="h-full">
               <div className="flex gap-4 items-center">
                 <Check className="shrink-0" />
@@ -157,8 +157,8 @@ const FunnelSteps = ({ funnel, subaccountId, pages, funnelId }: Props) => {
               Create new steps
             </Button>
           </aside>
-          <aside className="flex-[0.7] bg-muted p-4 w-full">
-            <aside className="flex-[0.7] bg-muted p-4 ">
+          <aside className="flex-[0.6] bg-muted p-4 w-full">
+            <aside className="flex-[0.7] bg-muted p-4">
               {!!pages.length ? (
                 <Card className="h-full flex justify-between flex-col">
                   <CardHeader>
