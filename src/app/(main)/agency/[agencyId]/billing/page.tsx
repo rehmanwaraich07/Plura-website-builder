@@ -13,7 +13,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import clsx from "clsx";
-
+import SubscriptionHelper from "./_components/subscription-helper";
 type Props = {
   params: { agencyId: string };
 };
@@ -62,6 +62,11 @@ const Billing = async ({ params }: Props) => {
 
   return (
     <>
+      <SubscriptionHelper
+        prices={prices.data}
+        customerId={agencySubscription?.customerId || ""}
+        planExists={agencySubscription?.Subscription?.active === true}
+      />
       <h1 className="text-4xl p-4">Billing</h1>
       <Separator className=" mb-6" />
       <h2 className="text-2xl p-4">Current Plan</h2>
@@ -104,26 +109,33 @@ const Billing = async ({ params }: Props) => {
           }
         />
         {addOns.data.map((addOn) => (
-          <PricingCard
-            planExists={agencySubscription?.Subscription?.active === true}
-            prices={prices.data}
-            customerId={agencySubscription?.customerId || ""}
-            key={addOn.id}
-            amt={
-              //@ts-ignore
-              addOn.default_price?.unit_amount
-                ? //@ts-ignore
-                  `$${addOn.default_price.unit_amount / 100}`
-                : "$0"
-            }
-            buttonCta="Subscribe"
-            description="Dedicated support line & teams channel for support"
-            duration="/ month"
-            features={[]}
-            title={"24/7 priority support"}
-            highlightTitle="Get support now!"
-            highlightDescription="Get priority support and skip the long long with the click of a button."
-          />
+          <>
+            <PricingCard
+              planExists={agencySubscription?.Subscription?.active === true}
+              prices={prices.data}
+              customerId={agencySubscription?.customerId || ""}
+              key={addOn.id}
+              amt={
+                //@ts-ignore
+                addOn.default_price?.unit_amount
+                  ? //@ts-ignore
+                    `$${addOn.default_price.unit_amount / 100}`
+                  : "$0"
+              }
+              buttonCta="Subscribe"
+              description="Dedicated support line & teams channel for support"
+              duration="/ month"
+              features={[
+                "24/7 Support",
+                "Soultions for Every Problem",
+                "Advance Features",
+                "Automations",
+              ]}
+              title={"24/7 priority support"}
+              highlightTitle="Get support now!"
+              highlightDescription="Get priority support and skip the long long with the click of a button."
+            />
+          </>
         ))}
       </div>
       <h2 className="text-2xl p-4">Payment History</h2>

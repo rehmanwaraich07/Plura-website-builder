@@ -947,3 +947,32 @@ export const getDomainContent = async (subDomainName: string) => {
   });
   return response;
 };
+
+export const getPipelines = async (subaccountId: string) => {
+  const response = await db.pipeline.findMany({
+    where: {
+      subAccountId: subaccountId,
+    },
+    include: {
+      Lane: {
+        include: { Tickets: true },
+      },
+    },
+  });
+
+  return response;
+};
+
+export async function deleteNotification(notificationId: string) {
+  try {
+    await db.notification.delete({
+      where: {
+        id: notificationId,
+      },
+    });
+    return { success: true };
+  } catch (error) {
+    console.error("Error deleting notification:", error);
+    return { success: false, error: "Failed to delete notification" };
+  }
+}

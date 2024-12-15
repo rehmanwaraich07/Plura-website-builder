@@ -19,6 +19,8 @@ import { Switch } from "../ui/switch";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { ModeToggle } from "./mode-toggle";
 import { Button } from "../ui/button";
+import { deleteNotification } from "@/lib/queries";
+import { toast } from "sonner";
 
 type Props = {
   notifications: NotificationWithUser | [];
@@ -34,9 +36,8 @@ const InfoBar = ({ notifications, subAccountId, className, role }: Props) => {
   const [showAll, setShowAll] = useState(true);
 
   useEffect(() => {
-    console.log("Notifications prop:", notifications);
-    console.log("All notifications state:", allNotifications);
-  }, [notifications, allNotifications]);
+    setAllNotifications(notifications);
+  }, [notifications]);
 
   const handleClick = () => {
     if (!showAll) {
@@ -52,12 +53,22 @@ const InfoBar = ({ notifications, subAccountId, className, role }: Props) => {
     setShowAll((prev) => !prev);
   };
 
-  const handleDelete = (id: string) => {
-    setAllNotifications((prev) =>
-      Array.isArray(prev)
-        ? prev.filter((notification) => notification.id !== id)
-        : []
-    );
+  const handleDelete = async (id: string) => {
+    const result = await deleteNotification(id);
+    if (result.success) {
+      setAllNotifications((prev) =>
+        Array.isArray(prev)
+          ? prev.filter((notification) => notification.id !== id)
+          : []
+      );
+      toast("Success", {
+        description: "The notification has been permanently removed.",
+      });
+    } else {
+      toast("Failed", {
+        description: "Failed to delete the notification. Please try again.",
+      });
+    }
   };
 
   return (
