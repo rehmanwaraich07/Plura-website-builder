@@ -1,3 +1,5 @@
+"use client";
+import { AboutSection } from "@/components/ui/bentoGrid";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -7,14 +9,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { FeaturesSectionDemo } from "@/components/ui/features";
+import { AnimatedTestimonialsDemo } from "@/components/ui/testimonials";
 import { pricingCards } from "@/lib/constants";
-import { stripe } from "@/lib/stripe";
 import clsx from "clsx";
 import { Check } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function Home() {
+export default function Home() {
   return (
     <main className="pb-16 md:pb-24 overflow-hidden">
       {/* Hero Section */}
@@ -46,7 +49,10 @@ export default async function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="flex justify-center items-center flex-col gap-4 mt-20 md:mt-40 px-4 sm:px-6 lg:px-8">
+      <section
+        className="flex justify-center items-center flex-col gap-4 mt-20 md:mt-40 px-4 sm:px-6 lg:px-8"
+        id="pricing"
+      >
         <div className="text-center animate-fade-in">
           <h2 className="text-center text-3xl sm:text-4xl font-bold">
             Choose what fits you right
@@ -113,6 +119,52 @@ export default async function Home() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* features section */}
+      <section
+        className="flex justify-center items-center flex-col gap-4 mt-20 md:mt-40 px-4 sm:px-6 lg:px-8"
+        id="features"
+      >
+        <div className="text-center animate-fade-in">
+          <h1 className="text-center text-3xl sm:text-4xl font-bold">
+            Run Your Agency in One Place
+          </h1>
+          <p className="text-muted-foreground text-center text-sm sm:text-base max-w-2xl mt-4">
+            Plura simplifies website building, client management, and growth
+            with powerful tools, all in one seamless platform.
+          </p>
+        </div>
+        <FeaturesSectionDemo />
+      </section>
+
+      {/* about section */}
+
+      <section
+        className="flex justify-center items-center flex-col gap-8 md:mt-20 px-4 sm:px-6 lg:px-8"
+        id="about"
+      >
+        <div className="mt-12 text-center">
+          <AboutSection />
+        </div>
+      </section>
+
+      {/* testimonials */}
+      <section
+        className="flex justify-center items-center flex-col gap-4 mt-20 md:mt-40 px-4 sm:px-6 lg:px-8"
+        id="testimonials"
+      >
+        <div className="text-center animate-fade-in">
+          <h1 className="text-center text-3xl sm:text-4xl font-bold">
+            What Our Clients Say
+          </h1>
+          <p className="text-muted-foreground text-center text-sm sm:text-base max-w-2xl mt-4">
+            Discover how Plura has transformed the workflows of our clients
+            across various industries. Their experiences speak volumes about the
+            efficiency, scalability, and innovation our platform offers.
+          </p>
+        </div>
+        <AnimatedTestimonialsDemo />
       </section>
     </main>
   );

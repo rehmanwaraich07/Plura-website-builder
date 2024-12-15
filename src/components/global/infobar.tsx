@@ -100,7 +100,7 @@ const InfoBar = ({ notifications, subAccountId, className, role }: Props) => {
                       className="rounded-full focus:outline-none focus:ring-2 focus:ring-primary"
                       aria-label="Close notification bar"
                     >
-                      <X className="h-5 w-5 mr-6" />
+                      <X className="h-5 w-5" />
                     </Button>
                   </SheetClose>
                 </div>

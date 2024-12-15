@@ -5,6 +5,7 @@
 html,
 body {
   height: 100vh;
+  scroll-behavior: smooth;
 }
 
 *,
@@ -25,7 +26,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #03070F;
+  background: #03070f;
   border-radius: 2px;
 }
 
@@ -46,7 +47,7 @@ body {
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: #03070F;
+    background: #03070f;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
