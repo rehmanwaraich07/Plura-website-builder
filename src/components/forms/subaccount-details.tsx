@@ -56,7 +56,6 @@ interface SubAccountDetailsProps {
 const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
   details,
   agencyDetails,
-  userId,
   userName,
 }) => {
   const { toast } = useToast();
@@ -127,7 +126,7 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
 
   const isLoading = form.formState.isSubmitting;
   return (
-    <Card className="w-full">
+    <Card className="w-full [&_::-webkit-scrollbar]:w-2 [&_::-webkit-scrollbar-thumb]:bg-muted-foreground/20 [&_::-webkit-scrollbar-thumb]:rounded-full [&_::-webkit-scrollbar-track]:bg-muted">
       <CardHeader>
         <CardTitle>Sub Account Information</CardTitle>
         <CardDescription>Enter business details</CardDescription>
