@@ -14,9 +14,15 @@ body {
   box-sizing: border-box;
 }
 
+@layer {
+  .social-icon {
+    @apply flex size-10 items-center justify-center rounded-full border-2 border-[#1959AD40] bg-[#1959AD0D] transition-all duration-500 hover:border-primary;
+  }
+}
+
 /* Existing Scrollbar Styles */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 2px;
 }
 
 ::-webkit-scrollbar-thumb {

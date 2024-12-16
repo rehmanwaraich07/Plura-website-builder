@@ -241,3 +241,30 @@ export const pricingCards = [
     priceId: "price_1QRtPRGLZVg3AidqNqD4D4l6",
   },
 ];
+
+export const socials = [
+  {
+    id: "0",
+    title: "x",
+    icon: "/socials/x.svg",
+    url: "https://x.com/reachrehman",
+  },
+  {
+    id: "1",
+    title: "Threads",
+    icon: "/socials/threads.svg",
+    url: "#",
+  },
+  {
+    id: "2",
+    title: "Instagram",
+    icon: "/socials/instagram.svg",
+    url: "https://instagram.com/rehmanwaraich07",
+  },
+  {
+    id: "3",
+    title: "Discord",
+    icon: "/socials/discord.svg",
+    url: "#",
+  },
+];
