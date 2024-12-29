@@ -33,7 +33,7 @@ export function About() {
           {/* Photo */}
           <div className="w-32 h-32 mb-4 overflow-hidden rounded-full">
             <Image
-              src="/assets/rehman.jpeg"
+              src="/assets/rehman.jpg"
               alt="CEO 1"
               width={120}
               height={120}
