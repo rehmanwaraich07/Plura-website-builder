@@ -64,7 +64,7 @@ export function About() {
             />
           </div>
           {/* Name */}
-          <p className="text-xl font-bold text-white">Umair Waraich</p>
+          <p className="text-xl font-bold text-white">Jhon Jones</p>
           {/* Description */}
           <p className="text-neutral-200 mt-2">
             “Leading with vision, I’ve seen Plura streamline processes and
