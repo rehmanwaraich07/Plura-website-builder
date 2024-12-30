@@ -66,26 +66,6 @@ const features = [
     description:
       "Work seamlessly with your team using our collaboration tools, allowing you to assign tasks, share drafts, and provide feedback in real-time.",
   },
-  {
-    title: "Integrated CRM",
-    description:
-      "Manage client relationships effortlessly with our built-in CRM, enabling you to track leads, sales, and communications all in one place.",
-  },
-  {
-    title: "Responsive Design",
-    description:
-      "Ensure your websites and projects look stunning on all devices, providing a seamless experience for both desktop and mobile users.",
-  },
-  {
-    title: "AI-Powered Automation",
-    description:
-      "Streamline workflows with AI-powered automation, helping you generate content, optimize campaigns, and improve efficiency.",
-  },
-  {
-    title: "Scalable Multi-Tenant Architecture",
-    description:
-      "Grow your business without limits using our scalable multi-tenant architecture, perfect for managing multiple clients and projects seamlessly.",
-  },
 ];
 
 export const Grid = ({
