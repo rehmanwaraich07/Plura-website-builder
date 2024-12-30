@@ -33,7 +33,7 @@ export function About() {
           {/* Photo */}
           <div className="w-32 h-32 mb-4 overflow-hidden rounded-full">
             <Image
-              src="/assets/rehman.jpeg"
+              src="/assets/rehman.jpg"
               alt="CEO 1"
               width={120}
               height={120}
@@ -64,7 +64,7 @@ export function About() {
             />
           </div>
           {/* Name */}
-          <p className="text-xl font-bold text-white">Umair Waraich</p>
+          <p className="text-xl font-bold text-white">Jhon Jones</p>
           {/* Description */}
           <p className="text-neutral-200 mt-2">
             “Leading with vision, I’ve seen Plura streamline processes and
