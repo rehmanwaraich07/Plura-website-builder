@@ -26,4 +26,3 @@
 #### Plura streamlines the web development process, allowing agencies to focus on creativity and client success. Whether you're building a simple landing page or a complex e-commerce platform, Plura provides the tools you need to bring your vision to life.
 
 ### Buit with 💗 by M.Rehman Waraich
-#### Follow for more Saas Appplications like this.
