@@ -1,7 +1,5 @@
 "use client";
-import { About } from "@/components/global/about";
 import Footer from "@/components/global/footer";
-import { AboutSection } from "@/components/ui/bentoGrid";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -158,11 +156,6 @@ export default function Home() {
               innovation—all in one platform.
             </p>
           </div>
-          <div className="mt-16">
-            {" "}
-            <About />
-          </div>
-        </section>
 
         {/* testimonials */}
         <section
