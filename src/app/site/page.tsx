@@ -140,23 +140,6 @@ export default function Home() {
           <FeaturesSectionDemo />
         </section>
 
-        {/* about section */}
-
-        <section
-          className="flex justify-center items-center flex-col gap-8 mt-20 md:mt-40 px-4 sm:px-6 lg:px-8"
-          id="about"
-        >
-          <div className="text-center animate-fade-in">
-            <h1 className="text-center text-3xl sm:text-4xl font-bold">
-              What Our Leaders Say
-            </h1>
-            <p className="text-muted-foreground text-center text-sm sm:text-base max-w-2xl mt-4">
-              Discover how Plura empowers teams and transforms workflows through
-              the words of our visionary leaders. Efficiency, reliability, and
-              innovation—all in one platform.
-            </p>
-          </div>
-
         {/* testimonials */}
         <section
           className="flex justify-center items-center flex-col gap-4 mt-20 md:mt-40 px-4 sm:px-6 lg:px-8"
